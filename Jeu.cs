@@ -16,5 +16,20 @@ namespace tp2048
         {
             InitializeComponent();
         }
+
+        private void Jeu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TexteMouvement_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
