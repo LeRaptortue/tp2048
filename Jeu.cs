@@ -16,6 +16,8 @@ namespace tp2048
         public Jeu()
         {
             InitializeComponent();
+            Case20.BackColor = Color.Chartreuse;
+            Case20.Text = "2";
         }
 
         private void Jeu_Load(object sender, EventArgs e)
@@ -46,7 +48,7 @@ namespace tp2048
             MessageEtat($"Touche {Direction(e)}");
             if(Direction(e)!= Sens.Autre)
             {
-                _mouvements++;
+                _mouvements+=1;
                 LabelMouvement.Text = _mouvements.ToString();
             }
         }
