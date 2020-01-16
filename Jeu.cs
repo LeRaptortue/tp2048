@@ -13,11 +13,14 @@ namespace tp2048
     public partial class Jeu : Form
     {
         private int _mouvements = 0;
+        private int[,] _case = new int[4, 4];
         public Jeu()
         {
             InitializeComponent();
-            Case20.BackColor = Color.Chartreuse;
-            Case20.Text = "2";
+            _case[2, 0] = 2;
+            Case20.Text = _case[2, 0].ToString();
+            Case20.BackColor = Outils.Couleurs(_case[2, 0])["fond"];
+            Case20.ForeColor = Outils.Couleurs(_case[2, 0])["fonte"];
         }
 
         private void Jeu_Load(object sender, EventArgs e)
