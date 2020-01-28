@@ -49,12 +49,15 @@ namespace tp2048
                     couleurFond = Color.MediumSpringGreen;
                     break;
             }
-            var couleur = new Dictionary<string, System.Drawing.Color>
+            var couleur = new Dictionary<string, Color>
             {
                 ["fonte"] = couleurFonte,
                 ["fond"] = couleurFond
             };
             return couleur;
         }
+
+        
     }
 }
+
