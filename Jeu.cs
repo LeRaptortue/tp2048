@@ -18,14 +18,14 @@ namespace tp2048
         public Jeu()
         {
             InitializeComponent();
-            _case[1, 1] = 2;
-            _case[2, 2] = 4;
-            _case[2, 0] = 16;
+            _case[0, 1] = 32;
+            _case[1, 0] = 4;
+            _case[1, 1] = 16;
+            _case[2, 0] = 64;
+            Case01.Text = _case[0, 1].ToString();
+            Case10.Text = _case[1, 0].ToString();
             Case11.Text = _case[1, 1].ToString();
-            Case22.Text = _case[2, 2].ToString();
-            Case33.Text = _case[2, 0].ToString();
-            //Case20.BackColor = Outils.Couleurs(_case[2, 0])["fond"];
-            //Case20.ForeColor = Outils.Couleurs(_case[2, 0])["fonte"];
+            Case20.Text = _case[2, 0].ToString();
         }
 
         private void Jeu_Load(object sender, EventArgs e)
@@ -106,73 +106,102 @@ namespace tp2048
             switch(s)
             {
                 case Sens.Droite:
-                    for (int j = 0; j <= 3; j += 1)
+                    for (int j=0; j<=3; j+=1)
                     {
-                        for (int i = 2; i >= 0; i -= 1)
+                        for(int i=2; i>=0; i-=1)
                         {
-                            if ((_case[i + 1, j] == 0) && (_case[i, j] != 0))
+                            if (_case[i,j] !=0)
                             {
-                                _case[i + 1, j] = _case[i, j];
-                                _case[i, j] = 0;
-                                caseDeplacee = true;
+                                int k = i;
+                                int liberte = i;
+                                do
+                                {
+                                    if (_case[k + 1, j] == 0) { liberte = k + 1; }
+                                    k += 1;
+                                } while ((k < 3) && (_case[k, j] == 0));
+                                if (liberte !=i)
+                                {
+                                    _case[liberte, j] = _case[i, j];
+                                    _case[i, j] = 0;
+                                    caseDeplacee = true;
 
-                                log4net.GlobalContext.Properties["fichierLog"] = $"C:\\Users\\{Environment.UserName}\\Appdata\\Local\\Temp\\2048/log";
-                                log4net.Config.XmlConfigurator.Configure();
-                                Logs.Debug("Déplacement à droite");
+                                    Logs.Debug("Déplacement à droite");
+                                }
                             }
                         }
                     }
                     return caseDeplacee;
                 case Sens.Gauche:
-                    for (int j = 0; j <= 3; j += 1) //int i =2;i>=0; i-=1
+                    for (int j = 0; j <= 3; j += 1)
                     {
-                        for(int i = 1; i <= 3; i += 1) //int j=0;j<=3;j+=1
+                        for (int i = 1; i <= 3; i += 1)
                         {
-                            if ((_case[i - 1, j] == 0) && (_case[i, j] != 0))
+                            if (_case[i, j] != 0)
                             {
-                                _case[i - 1, j] = _case[i, j];
-                                _case[i, j] = 0;
-                                caseDeplacee = true;
-
-                                log4net.GlobalContext.Properties["fichierLog"] = $"C:\\Users\\{Environment.UserName}\\Appdata\\Local\\Temp\\2048/log";
-                                log4net.Config.XmlConfigurator.Configure();
-                                Logs.Debug("Déplacement à gauche");
+                                int k = i;
+                                int liberte = i;
+                                do
+                                {
+                                    if (_case[k - 1, j] == 0) { liberte = k - 1; }
+                                    k -= 1;
+                                } while ((k > 0) && (_case[k, j] == 0));
+                                if (liberte != i)
+                                {
+                                    _case[liberte, j] = _case[i, j];
+                                    _case[i, j] = 0;
+                                    caseDeplacee = true;
+                                    Logs.Debug("Déplacement à Gauche");
+                                }
                             }
                         }
                     }
                     return caseDeplacee;
                 case Sens.Bas:
-                    for (int j = 2; j >=0; j -= 1)
+                    for (int j = 2; j >= 0; j -= 1)
                     {
                         for (int i = 0; i <= 3; i += 1)
                         {
-                            if ((_case[i, j+1] == 0) && (_case[i, j] != 0))
+                            if (_case[i, j] != 0)
                             {
-                                _case[i, j+1] = _case[i, j];
-                                _case[i, j] = 0;
-                                caseDeplacee = true;
-
-                                log4net.GlobalContext.Properties["fichierLog"] = $"C:\\Users\\{Environment.UserName}\\Appdata\\Local\\Temp\\2048/log";
-                                log4net.Config.XmlConfigurator.Configure();
-                                Logs.Debug("Déplacement en bas");
+                                int k = j;
+                                int liberte = j;
+                                do
+                                {
+                                    if (_case[i, k+1] == 0) { liberte = k + 1; }
+                                    k += 1;
+                                } while ((k < 3) && (_case[i, k] == 0));
+                                if (liberte != j)
+                                {
+                                    _case[i, liberte] = _case[i, j];
+                                    _case[i, j] = 0;
+                                    caseDeplacee = true;
+                                    Logs.Debug("Déplacement vers le bas");
+                                }
                             }
                         }
                     }
                     return caseDeplacee;
                 case Sens.Haut:
-                    for (int j = 1; j <= 3; j += 1)//int j = 2; j >= 0; j += 1
+                    for (int j = 1; j <= 3; j += 1)
                     {
-                        for (int i = 0; i <=3; i += 1)//int i = 0; i <= 3; i += 1
+                        for (int i = 0; i <= 3; i += 1)
                         {
-                            if ((_case[i, j - 1] == 0) && (_case[i, j] != 0))
+                            if (_case[i, j] != 0)
                             {
-                                _case[i, j - 1] = _case[i, j];
-                                _case[i, j] = 0;
-                                caseDeplacee = true;
-
-                                log4net.GlobalContext.Properties["fichierLog"] = $"C:\\Users\\{Environment.UserName}\\Appdata\\Local\\Temp\\2048/log";
-                                log4net.Config.XmlConfigurator.Configure();
-                                Logs.Debug("Déplacement en Haut");
+                                int k = j;
+                                int liberte = j;
+                                do
+                                {
+                                    if (_case[i, k - 1] == 0) { liberte = k - 1; }
+                                    k -= 1;
+                                } while ((k > 0) && (_case[i, k] == 0));
+                                if (liberte != j)
+                                {
+                                    _case[i, liberte] = _case[i, j];
+                                    _case[i, j] = 0;
+                                    caseDeplacee = true;
+                                    Logs.Debug("Déplacement vers le bas");
+                                }
                             }
                         }
                     }
@@ -180,7 +209,6 @@ namespace tp2048
                 case Sens.Autre:
                     return caseDeplacee;
             }
-
             return caseDeplacee;
         }
 
@@ -190,13 +218,7 @@ namespace tp2048
             log4net.GlobalContext.Properties["fichierLog"] = $"C:\\Users\\{Environment.UserName}\\Appdata\\Local\\Temp\\2048/log";
             log4net.Config.XmlConfigurator.Configure();
             Logs.Debug("Fermeture ?");
-            e.Cancel = MessageBox.Show(
-                String.Format("Fermeture de l'application demandée pour {0}. Voulez-vous quitter ?",
-                e.CloseReason), "Fermeture...",
-                MessageBoxButtons.YesNo) == DialogResult.No;
-
-            log4net.GlobalContext.Properties["fichierLog"] = $"C:\\Users\\{Environment.UserName}\\Appdata\\Local\\Temp\\2048/log";
-            log4net.Config.XmlConfigurator.Configure();
+            e.Cancel = MessageBox.Show(String.Format("Fermeture de l'application demandée pour {0}. Voulez-vous quitter ?", e.CloseReason), "Fermeture...", MessageBoxButtons.YesNo) == DialogResult.No;
             Logs.Debug("Fermeture en cours");
         }
     }
