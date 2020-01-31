@@ -14,18 +14,15 @@ namespace tp2048
     public partial class Jeu : Form
     {
         private int _mouvements = 0;
+        private int _score = 0;
         private int[,] _case = new int[4, 4];
         public Jeu()
         {
             InitializeComponent();
-            _case[0, 1] = 32;
-            _case[1, 0] = 4;
-            _case[1, 1] = 16;
-            _case[2, 0] = 64;
-            Case01.Text = _case[0, 1].ToString();
-            Case10.Text = _case[1, 0].ToString();
-            Case11.Text = _case[1, 1].ToString();
-            Case20.Text = _case[2, 0].ToString();
+            //_case[0, 1] = 32;
+            //Case01.Text = _case[0, 1].ToString();
+            _case = testp9.testP9();
+            Affiche();
         }
 
         private void Jeu_Load(object sender, EventArgs e)
@@ -60,8 +57,10 @@ namespace tp2048
         {
             Sens touche = Direction(e);
             MessageEtat($"Touche {touche}");
-            if(Bouge(touche))
+            (bool caseDeplacee, int score) = Bouge(touche);
+            if(caseDeplacee)
             {
+                _score += score;
                 _mouvements+=1;
                 Affiche();
             }
@@ -83,6 +82,7 @@ namespace tp2048
                     Affiche(i, j);
                 }
             }
+            LabelScore.Text = _score.ToString();
             LabelMouvement.Text = _mouvements.ToString();
         }
         public enum Sens
@@ -100,37 +100,51 @@ namespace tp2048
                 default: return Sens.Autre;
             }
         }
-        private bool Bouge(Sens s)
+        private (bool, int) Bouge(Sens s)
         {
             bool caseDeplacee = false;
-            switch(s)
+            int score = 0;
+            bool[,] fusion= new bool[4,4];
+            switch (s)
             {
                 case Sens.Droite:
-                    for (int j=0; j<=3; j+=1)
+                    for (int j = 0; j <= 3; j += 1)
                     {
-                        for(int i=2; i>=0; i-=1)
+                        for (int i = 2; i >= 0; i -= 1)
                         {
-                            if (_case[i,j] !=0)
+                            if (_case[i, j] != 0)
                             {
                                 int k = i;
                                 int liberte = i;
                                 do
                                 {
-                                    if (_case[k + 1, j] == 0) { liberte = k + 1; }
+                                    if ((_case[k + 1, j] == 0)
+                                        || (! fusion[k + 1, j] && (_case[k + 1, j] == _case[i, j])))
+                                    {
+                                        liberte = k + 1;
+                                    }
                                     k += 1;
                                 } while ((k < 3) && (_case[k, j] == 0));
-                                if (liberte !=i)
+                                if (liberte != i)
                                 {
-                                    _case[liberte, j] = _case[i, j];
+                                    if (_case[liberte, j] == 0)
+                                    {
+                                        _case[liberte, j] = _case[i, j];
+                                    } 
+                                    else
+                                    {
+                                        _case[liberte, j] *= 2;
+                                        score += _case[liberte, j];
+                                        fusion[liberte, j] = true;
+                                    }
                                     _case[i, j] = 0;
                                     caseDeplacee = true;
-
-                                    Logs.Debug("Déplacement à droite");
+                                    Logs.Debug("Déplacement vers la droite");
                                 }
                             }
                         }
                     }
-                    return caseDeplacee;
+                    return (caseDeplacee, score);
                 case Sens.Gauche:
                     for (int j = 0; j <= 3; j += 1)
                     {
@@ -142,20 +156,33 @@ namespace tp2048
                                 int liberte = i;
                                 do
                                 {
-                                    if (_case[k - 1, j] == 0) { liberte = k - 1; }
+                                    if ((_case[k - 1, j] == 0)
+                                        || (!fusion[k - 1, j] && (_case[k - 1, j] == _case[i, j])))
+                                    {
+                                        liberte = k - 1;
+                                    }
                                     k -= 1;
                                 } while ((k > 0) && (_case[k, j] == 0));
                                 if (liberte != i)
                                 {
-                                    _case[liberte, j] = _case[i, j];
+                                    if (_case[liberte, j] == 0)
+                                    {
+                                        _case[liberte, j] = _case[i, j];
+                                    }
+                                    else
+                                    {
+                                        _case[liberte, j] *= 2;
+                                        score += _case[liberte, j];
+                                        fusion[liberte, j] = true;
+                                    }
                                     _case[i, j] = 0;
                                     caseDeplacee = true;
-                                    Logs.Debug("Déplacement à Gauche");
+                                    Logs.Debug("Déplacement vers la gauche");
                                 }
                             }
                         }
                     }
-                    return caseDeplacee;
+                    return (caseDeplacee, score);
                 case Sens.Bas:
                     for (int j = 2; j >= 0; j -= 1)
                     {
@@ -167,12 +194,25 @@ namespace tp2048
                                 int liberte = j;
                                 do
                                 {
-                                    if (_case[i, k+1] == 0) { liberte = k + 1; }
+                                    if ((_case[i, k+1] == 0)
+                                        || (!fusion[i, k+1] && (_case[i, k+1] == _case[i, j])))
+                                    {
+                                        liberte = k + 1;
+                                    }
                                     k += 1;
                                 } while ((k < 3) && (_case[i, k] == 0));
                                 if (liberte != j)
                                 {
-                                    _case[i, liberte] = _case[i, j];
+                                    if (_case[i, liberte] == 0)
+                                    {
+                                        _case[i, liberte] = _case[i, j];
+                                    }
+                                    else
+                                    {
+                                        _case[i, liberte] *= 2;
+                                        score += _case[i, liberte];
+                                        fusion[i, liberte] = true;
+                                    }
                                     _case[i, j] = 0;
                                     caseDeplacee = true;
                                     Logs.Debug("Déplacement vers le bas");
@@ -180,7 +220,8 @@ namespace tp2048
                             }
                         }
                     }
-                    return caseDeplacee;
+
+                    return (caseDeplacee, score);
                 case Sens.Haut:
                     for (int j = 1; j <= 3; j += 1)
                     {
@@ -192,12 +233,25 @@ namespace tp2048
                                 int liberte = j;
                                 do
                                 {
-                                    if (_case[i, k - 1] == 0) { liberte = k - 1; }
+                                    if ((_case[i, k - 1] == 0)
+                                        || (!fusion[i, k - 1] && (_case[i, k - 1] == _case[i, j])))
+                                    {
+                                        liberte = k - 1;
+                                    }
                                     k -= 1;
                                 } while ((k > 0) && (_case[i, k] == 0));
                                 if (liberte != j)
                                 {
-                                    _case[i, liberte] = _case[i, j];
+                                    if (_case[i, liberte] == 0)
+                                    {
+                                        _case[i, liberte] = _case[i, j];
+                                    }
+                                    else
+                                    {
+                                        _case[i, liberte] *= 2;
+                                        score += _case[i, liberte];
+                                        fusion[i, liberte] = true;
+                                    }
                                     _case[i, j] = 0;
                                     caseDeplacee = true;
                                     Logs.Debug("Déplacement vers le bas");
@@ -205,11 +259,14 @@ namespace tp2048
                             }
                         }
                     }
-                    return caseDeplacee;
+
+                    return (caseDeplacee, score);
+
+                    return (caseDeplacee, score);
                 case Sens.Autre:
-                    return caseDeplacee;
+                    return (caseDeplacee, score);
             }
-            return caseDeplacee;
+            return (caseDeplacee, score);
         }
 
 
