@@ -53,6 +53,9 @@
             this.LabelScore = new System.Windows.Forms.Label();
             this.TexteMouvement = new System.Windows.Forms.Label();
             this.LabelMouvement = new System.Windows.Forms.Label();
+            this.aideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.afficherLaideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.àProposDu2048ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.Grille.SuspendLayout();
@@ -61,7 +64,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NouveauJeu});
+            this.NouveauJeu,
+            this.aideToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(334, 24);
@@ -357,6 +361,27 @@
             this.LabelMouvement.TabIndex = 6;
             this.LabelMouvement.Click += new System.EventHandler(this.label1_Click);
             // 
+            // aideToolStripMenuItem
+            // 
+            this.aideToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.afficherLaideToolStripMenuItem,
+            this.àProposDu2048ToolStripMenuItem});
+            this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
+            this.aideToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.aideToolStripMenuItem.Text = "Aide";
+            // 
+            // afficherLaideToolStripMenuItem
+            // 
+            this.afficherLaideToolStripMenuItem.Name = "afficherLaideToolStripMenuItem";
+            this.afficherLaideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.afficherLaideToolStripMenuItem.Text = "Afficher l\'aide";
+            // 
+            // àProposDu2048ToolStripMenuItem
+            // 
+            this.àProposDu2048ToolStripMenuItem.Name = "àProposDu2048ToolStripMenuItem";
+            this.àProposDu2048ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.àProposDu2048ToolStripMenuItem.Text = "À propos du 2048";
+            // 
             // Jeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,6 +441,9 @@
         private System.Windows.Forms.Label LabelScore;
         private System.Windows.Forms.Label TexteMouvement;
         private System.Windows.Forms.Label LabelMouvement;
+        private System.Windows.Forms.ToolStripMenuItem aideToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem afficherLaideToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem àProposDu2048ToolStripMenuItem;
     }
 }
 

@@ -16,37 +16,37 @@ namespace tp2048
             switch(valeur)
             {
                 case 2:
-                    couleurFond = Color.MediumSeaGreen;
+                    couleurFond = Color.FromArgb(0x7A,0xFF,0xF6);
                     break;
                 case 4:
-                    couleurFond = Color.SpringGreen;
+                    couleurFond = Color.FromArgb(0x48,0xE8,0xA7);
                     break;
                 case 8:
-                    couleurFond = Color.SeaGreen;
+                    couleurFond = Color.FromArgb(0x5C,0xFF,0x84);
                     break;
                 case 16:
-                    couleurFond = Color.ForestGreen;
+                    couleurFond = Color.FromArgb(0x5A,0xE8,0x48);
                     break;
                 case 32:
-                    couleurFond = Color.Green;
+                    couleurFond = Color.FromArgb(0xAD,0xFF,0x4F);
                     break;
                 case 64:
-                    couleurFond = Color.DarkGreen;
+                    couleurFond = Color.FromArgb(0xEB,0xDA,0x38);
                     break;
                 case 128:
-                    couleurFond = Color.DarkOliveGreen;
+                    couleurFond = Color.FromArgb(0xFF,0xC2,0x40);
                     break;
                 case 256:
-                    couleurFond = Color.OliveDrab;
+                    couleurFond = Color.FromArgb(0xEB,0x99,0x63);
                     break;
                 case 512:
-                    couleurFond = Color.SpringGreen;
+                    couleurFond = Color.FromArgb(0xFF, 0x82,0x78);
                     break;
                 case 1024:
-                    couleurFond = Color.Teal;
+                    couleurFond = Color.FromArgb(0xFF,0x45,0x5A);
                     break;
                 case 2048:
-                    couleurFond = Color.MediumSpringGreen;
+                    couleurFond = Color.FromArgb(0xFF, 0x45, 0x5A);
                     break;
             }
             var couleur = new Dictionary<string, Color>
@@ -55,6 +55,26 @@ namespace tp2048
                 ["fond"] = couleurFond
             };
             return couleur;
+        }
+
+        public static(int,int,int) aleaCase(int[,] plateau)
+        {
+            const float PROBA2 = 0.9F;
+            int x;
+            int y;
+            int v = 2;
+            Random rnd = new Random();
+
+            do
+            {
+                x = rnd.Next(0, 4);
+                y = rnd.Next(0, 4);
+            } while (plateau[x, y] != 0);
+            if(rnd.NextDouble()>=PROBA2)
+            {
+                v = 4;
+            }
+            return (x, y, v);
         }
 
         
