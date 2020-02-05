@@ -17,10 +17,6 @@ namespace tp2048
         private int _score = 0;
         private int[,] _case = new int[4, 4];
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
         private void MessageEtat(string message)
         {
             LabelEtat.Text = message;
@@ -50,8 +46,17 @@ namespace tp2048
             LabelScore.Text = _score.ToString();
             LabelMouvement.Text = _mouvements.ToString();
         }
-       
 
-        
+        private void àProposDu2048ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var aPropos = new aPropos();
+            aPropos.StartPosition = FormStartPosition.CenterParent;
+            aPropos.ShowDialog();
+        }
+
+        private void afficherLaideToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

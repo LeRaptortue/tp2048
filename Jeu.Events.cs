@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 //Gestion des différents evenements
 
@@ -115,6 +116,7 @@ namespace tp2048
             log4net.GlobalContext.Properties["fichierLog"] = $"C:\\Users\\{Environment.UserName}\\Appdata\\Local\\Temp\\2048/log";
             log4net.Config.XmlConfigurator.Configure();
             Logs.Debug("Démarrage du programme");
+            SqlDB.Instance().ExecSQL($"INSERT OR IGNORE INTO `utilisateur` (pseudo) VALUES ('{Environment.UserName}')");
         }
     }
 }

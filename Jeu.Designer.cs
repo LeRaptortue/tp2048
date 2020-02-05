@@ -30,6 +30,8 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.NouveauJeu = new System.Windows.Forms.ToolStripMenuItem();
+            this.aideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.àProposDu2048ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.LabelEtat = new System.Windows.Forms.ToolStripStatusLabel();
             this.Grille = new System.Windows.Forms.TableLayoutPanel();
@@ -53,9 +55,6 @@
             this.LabelScore = new System.Windows.Forms.Label();
             this.TexteMouvement = new System.Windows.Forms.Label();
             this.LabelMouvement = new System.Windows.Forms.Label();
-            this.aideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.afficherLaideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.àProposDu2048ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.Grille.SuspendLayout();
@@ -78,6 +77,21 @@
             this.NouveauJeu.Size = new System.Drawing.Size(67, 20);
             this.NouveauJeu.Text = "&Nouveau";
             this.NouveauJeu.Click += new System.EventHandler(this.NouveauJeu_Click);
+            // 
+            // aideToolStripMenuItem
+            // 
+            this.aideToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.àProposDu2048ToolStripMenuItem});
+            this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
+            this.aideToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.aideToolStripMenuItem.Text = "Aide";
+            // 
+            // àProposDu2048ToolStripMenuItem
+            // 
+            this.àProposDu2048ToolStripMenuItem.Name = "àProposDu2048ToolStripMenuItem";
+            this.àProposDu2048ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.àProposDu2048ToolStripMenuItem.Text = "À propos du 2048";
+            this.àProposDu2048ToolStripMenuItem.Click += new System.EventHandler(this.àProposDu2048ToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -229,7 +243,7 @@
             // Case31
             // 
             this.Case31.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case31.BackColor = System.Drawing.Color.LightGreen;
+            this.Case31.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case31.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case31.Location = new System.Drawing.Point(227, 77);
             this.Case31.Margin = new System.Windows.Forms.Padding(2);
@@ -241,7 +255,7 @@
             // Case21
             // 
             this.Case21.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case21.BackColor = System.Drawing.Color.LightGreen;
+            this.Case21.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case21.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case21.Location = new System.Drawing.Point(152, 77);
             this.Case21.Margin = new System.Windows.Forms.Padding(2);
@@ -253,7 +267,7 @@
             // Case11
             // 
             this.Case11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case11.BackColor = System.Drawing.Color.LightGreen;
+            this.Case11.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case11.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case11.Location = new System.Drawing.Point(77, 77);
             this.Case11.Margin = new System.Windows.Forms.Padding(2);
@@ -265,7 +279,7 @@
             // Case01
             // 
             this.Case01.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case01.BackColor = System.Drawing.Color.LightGreen;
+            this.Case01.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case01.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case01.Location = new System.Drawing.Point(2, 77);
             this.Case01.Margin = new System.Windows.Forms.Padding(2);
@@ -277,7 +291,7 @@
             // Case30
             // 
             this.Case30.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case30.BackColor = System.Drawing.Color.LightGreen;
+            this.Case30.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case30.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case30.Location = new System.Drawing.Point(227, 2);
             this.Case30.Margin = new System.Windows.Forms.Padding(2);
@@ -289,7 +303,7 @@
             // Case20
             // 
             this.Case20.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case20.BackColor = System.Drawing.Color.LightGreen;
+            this.Case20.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case20.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case20.Location = new System.Drawing.Point(152, 2);
             this.Case20.Margin = new System.Windows.Forms.Padding(2);
@@ -301,7 +315,7 @@
             // Case10
             // 
             this.Case10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case10.BackColor = System.Drawing.Color.LightGreen;
+            this.Case10.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case10.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case10.Location = new System.Drawing.Point(77, 2);
             this.Case10.Margin = new System.Windows.Forms.Padding(2);
@@ -313,7 +327,7 @@
             // Case00
             // 
             this.Case00.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case00.BackColor = System.Drawing.Color.LightGreen;
+            this.Case00.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case00.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case00.Location = new System.Drawing.Point(2, 2);
             this.Case00.Margin = new System.Windows.Forms.Padding(2);
@@ -359,28 +373,6 @@
             this.LabelMouvement.Name = "LabelMouvement";
             this.LabelMouvement.Size = new System.Drawing.Size(0, 18);
             this.LabelMouvement.TabIndex = 6;
-            this.LabelMouvement.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // aideToolStripMenuItem
-            // 
-            this.aideToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.afficherLaideToolStripMenuItem,
-            this.àProposDu2048ToolStripMenuItem});
-            this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
-            this.aideToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.aideToolStripMenuItem.Text = "Aide";
-            // 
-            // afficherLaideToolStripMenuItem
-            // 
-            this.afficherLaideToolStripMenuItem.Name = "afficherLaideToolStripMenuItem";
-            this.afficherLaideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.afficherLaideToolStripMenuItem.Text = "Afficher l\'aide";
-            // 
-            // àProposDu2048ToolStripMenuItem
-            // 
-            this.àProposDu2048ToolStripMenuItem.Name = "àProposDu2048ToolStripMenuItem";
-            this.àProposDu2048ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.àProposDu2048ToolStripMenuItem.Text = "À propos du 2048";
             // 
             // Jeu
             // 
@@ -442,7 +434,6 @@
         private System.Windows.Forms.Label TexteMouvement;
         private System.Windows.Forms.Label LabelMouvement;
         private System.Windows.Forms.ToolStripMenuItem aideToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem afficherLaideToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem àProposDu2048ToolStripMenuItem;
     }
 }

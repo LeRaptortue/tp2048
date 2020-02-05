@@ -5,12 +5,14 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("tp2048")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("2048")]
+[assembly: AssemblyDescription("Le but du jeu est de faire glisser des tuiles sur la grille, pour combiner les tuiles de mêmes valeurs et créer ainsi une tuile portant le nombre 2048." +
+    "           " +
+    "Le joueur peut toutefois continuer à jouer après cet objectif atteint pour faire le meilleur score possible.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("tp2048")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCompany("Ce jeu à été réalisé en APAII 27")]
+[assembly: AssemblyProduct("2048")]
+[assembly: AssemblyCopyright("CFA - CFP La Joliverie | 2019 - 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
