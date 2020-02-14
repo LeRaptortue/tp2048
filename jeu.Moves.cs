@@ -201,7 +201,7 @@ namespace tp2048
                                     }
                                     _case[i, j] = 0;
                                     caseDeplacee = true;
-                                    Logs.Debug("Déplacement vers le bas");
+                                    Logs.Debug("Déplacement vers le haut");
                                     if (_case[i, liberte] == 2048)
                                     {
                                         EventArgs args = new EventArgs();

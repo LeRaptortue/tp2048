@@ -108,7 +108,7 @@ namespace tp2048
             log4net.GlobalContext.Properties["fichierLog"] = $"C:\\Users\\{Environment.UserName}\\Appdata\\Local\\Temp\\2048/log";
             log4net.Config.XmlConfigurator.Configure();
             Logs.Debug("Fermeture ?");
-            e.Cancel = MessageBox.Show(String.Format("Voulez-vous quitter ?")/*e.CloseReason*/ , "Fermeture...", MessageBoxButtons.YesNo) == DialogResult.No;
+            e.Cancel = MessageBox.Show(String.Format($"{Environment.UserName} souhaite prendre la fuite, vous confirmez ?")/*e.CloseReason*/ , "Poule mouillé", MessageBoxButtons.YesNo) == DialogResult.No;
             Logs.Debug("Fermeture en cours");
         }
         private void Jeu_Load(object sender, EventArgs e)

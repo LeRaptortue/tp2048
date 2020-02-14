@@ -30,6 +30,9 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.NouveauJeu = new System.Windows.Forms.ToolStripMenuItem();
+            this.scoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enregistrerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.voirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.àProposDu2048ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -49,8 +52,8 @@
             this.Case01 = new System.Windows.Forms.Label();
             this.Case30 = new System.Windows.Forms.Label();
             this.Case20 = new System.Windows.Forms.Label();
-            this.Case10 = new System.Windows.Forms.Label();
             this.Case00 = new System.Windows.Forms.Label();
+            this.Case10 = new System.Windows.Forms.Label();
             this.TexteScore = new System.Windows.Forms.Label();
             this.LabelScore = new System.Windows.Forms.Label();
             this.TexteMouvement = new System.Windows.Forms.Label();
@@ -64,6 +67,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NouveauJeu,
+            this.scoreToolStripMenuItem,
             this.aideToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -77,6 +81,29 @@
             this.NouveauJeu.Size = new System.Drawing.Size(67, 20);
             this.NouveauJeu.Text = "&Nouveau";
             this.NouveauJeu.Click += new System.EventHandler(this.NouveauJeu_Click);
+            // 
+            // scoreToolStripMenuItem
+            // 
+            this.scoreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enregistrerToolStripMenuItem,
+            this.voirToolStripMenuItem});
+            this.scoreToolStripMenuItem.Name = "scoreToolStripMenuItem";
+            this.scoreToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.scoreToolStripMenuItem.Text = "Score";
+            // 
+            // enregistrerToolStripMenuItem
+            // 
+            this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
+            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.enregistrerToolStripMenuItem.Text = "Enregistrer";
+            this.enregistrerToolStripMenuItem.Click += new System.EventHandler(this.enregistrerToolStripMenuItem_Click);
+            // 
+            // voirToolStripMenuItem
+            // 
+            this.voirToolStripMenuItem.Name = "voirToolStripMenuItem";
+            this.voirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.voirToolStripMenuItem.Text = "Voir";
+            this.voirToolStripMenuItem.Click += new System.EventHandler(this.voirToolStripMenuItem_Click);
             // 
             // aideToolStripMenuItem
             // 
@@ -132,8 +159,8 @@
             this.Grille.Controls.Add(this.Case01, 0, 1);
             this.Grille.Controls.Add(this.Case30, 3, 0);
             this.Grille.Controls.Add(this.Case20, 2, 0);
-            this.Grille.Controls.Add(this.Case10, 1, 0);
             this.Grille.Controls.Add(this.Case00, 0, 0);
+            this.Grille.Controls.Add(this.Case10, 1, 0);
             this.Grille.Location = new System.Drawing.Point(20, 54);
             this.Grille.Name = "Grille";
             this.Grille.RowCount = 4;
@@ -147,7 +174,7 @@
             // Case33
             // 
             this.Case33.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case33.BackColor = System.Drawing.Color.LightGreen;
+            this.Case33.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case33.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case33.Location = new System.Drawing.Point(227, 227);
             this.Case33.Margin = new System.Windows.Forms.Padding(2);
@@ -159,7 +186,7 @@
             // Case23
             // 
             this.Case23.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case23.BackColor = System.Drawing.Color.LightGreen;
+            this.Case23.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case23.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case23.Location = new System.Drawing.Point(152, 227);
             this.Case23.Margin = new System.Windows.Forms.Padding(2);
@@ -171,7 +198,7 @@
             // Case13
             // 
             this.Case13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case13.BackColor = System.Drawing.Color.LightGreen;
+            this.Case13.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case13.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case13.Location = new System.Drawing.Point(77, 227);
             this.Case13.Margin = new System.Windows.Forms.Padding(2);
@@ -183,7 +210,7 @@
             // Case03
             // 
             this.Case03.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case03.BackColor = System.Drawing.Color.LightGreen;
+            this.Case03.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case03.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case03.Location = new System.Drawing.Point(2, 227);
             this.Case03.Margin = new System.Windows.Forms.Padding(2);
@@ -195,7 +222,7 @@
             // Case32
             // 
             this.Case32.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case32.BackColor = System.Drawing.Color.LightGreen;
+            this.Case32.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case32.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case32.Location = new System.Drawing.Point(227, 152);
             this.Case32.Margin = new System.Windows.Forms.Padding(2);
@@ -207,7 +234,7 @@
             // Case22
             // 
             this.Case22.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case22.BackColor = System.Drawing.Color.LightGreen;
+            this.Case22.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case22.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case22.Location = new System.Drawing.Point(152, 152);
             this.Case22.Margin = new System.Windows.Forms.Padding(2);
@@ -219,7 +246,7 @@
             // Case12
             // 
             this.Case12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case12.BackColor = System.Drawing.Color.LightGreen;
+            this.Case12.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case12.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case12.Location = new System.Drawing.Point(77, 152);
             this.Case12.Margin = new System.Windows.Forms.Padding(2);
@@ -231,7 +258,7 @@
             // Case02
             // 
             this.Case02.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case02.BackColor = System.Drawing.Color.LightGreen;
+            this.Case02.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Case02.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Case02.Location = new System.Drawing.Point(2, 152);
             this.Case02.Margin = new System.Windows.Forms.Padding(2);
@@ -312,18 +339,6 @@
             this.Case20.TabIndex = 2;
             this.Case20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Case10
-            // 
-            this.Case10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Case10.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.Case10.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Case10.Location = new System.Drawing.Point(77, 2);
-            this.Case10.Margin = new System.Windows.Forms.Padding(2);
-            this.Case10.Name = "Case10";
-            this.Case10.Size = new System.Drawing.Size(71, 71);
-            this.Case10.TabIndex = 1;
-            this.Case10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Case00
             // 
             this.Case00.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -335,6 +350,18 @@
             this.Case00.Size = new System.Drawing.Size(71, 71);
             this.Case00.TabIndex = 0;
             this.Case00.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Case10
+            // 
+            this.Case10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Case10.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.Case10.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Case10.Location = new System.Drawing.Point(77, 2);
+            this.Case10.Margin = new System.Windows.Forms.Padding(2);
+            this.Case10.Name = "Case10";
+            this.Case10.Size = new System.Drawing.Size(71, 71);
+            this.Case10.TabIndex = 1;
+            this.Case10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TexteScore
             // 
@@ -435,6 +462,9 @@
         private System.Windows.Forms.Label LabelMouvement;
         private System.Windows.Forms.ToolStripMenuItem aideToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem àProposDu2048ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem enregistrerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem voirToolStripMenuItem;
     }
 }
 

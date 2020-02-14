@@ -15,6 +15,7 @@ namespace tp2048
     {
         private int _mouvements = 0;
         private int _score = 0;
+        private const int _scoreMinEngregistrement = 500;
         private int[,] _case = new int[4, 4];
 
         private void MessageEtat(string message)
@@ -57,6 +58,30 @@ namespace tp2048
         private void afficherLaideToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void enregistrerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((_score > _scoreMinEngregistrement)
+                && (MessageBox.Show($"Enregistrer le score de {_score} point pour {Environment.UserName} ?", "",
+                MessageBoxButtons.YesNo) == DialogResult.Yes))
+            {
+                SqlDB.Instance().ExecSQL($"INSERT INTO score (uid, points, instant) VALUES((SELECT uid FROM utilisateur WHERE pseudo ='{Environment.UserName}'), { _score}, DATETIME('now'))");
+            }
+            else
+            {
+                MessageBox.Show($"Vous êtes sérieux là ? Votre score n'est que de {_score} !" 
+                    + Environment.NewLine
+                    + $"Il faut au moins {_scoreMinEngregistrement} points pour pouvoir prétendre appartenir au Panthéon des Vainqueurs !"
+                    + Environment.NewLine
+                    + Environment.NewLine 
+                    + "Minable..","",MessageBoxButtons.OK);
+            }
+        }
+
+        private void voirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
