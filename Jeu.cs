@@ -81,7 +81,9 @@ namespace tp2048
 
         private void voirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            var score = new score();
+            score.StartPosition = FormStartPosition.CenterParent;
+            score.ShowDialog();
         }
     }
 }

@@ -82,7 +82,7 @@ namespace tp2048
         public DataSet LitSQL(string requete, string table)
         {
             DataSet donnees = new DataSet();
-            var connexion = new SQLiteConnection($"DataSource={_db};Version=3;New=False;Compress=True;");
+            var connexion = new SQLiteConnection($"DataSource=C:\\Users\\{Environment.UserName}\\AppData\\Local\\Temp\\2048\\2048.db;Version=3;New=False;Compress=True;");
             var commande = new SQLiteCommand(requete, connexion);
             var adaptateur = new SQLiteDataAdapter(commande);
             adaptateur.Fill(donnees, table);

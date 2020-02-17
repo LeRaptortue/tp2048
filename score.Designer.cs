@@ -28,50 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DataScores = new System.Windows.Forms.DataGridView();
-            this.points = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pseudo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.instant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.DataScores)).BeginInit();
+            this.DataScores = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataScores)).BeginInit();
             this.SuspendLayout();
-            // 
-            // DataScores
-            // 
-            this.DataScores.AllowUserToAddRows = false;
-            this.DataScores.AllowUserToDeleteRows = false;
-            this.DataScores.AllowUserToResizeRows = false;
-            this.DataScores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DataScores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataScores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.points,
-            this.pseudo,
-            this.instant});
-            this.DataScores.Location = new System.Drawing.Point(12, 27);
-            this.DataScores.Name = "DataScores";
-            this.DataScores.ReadOnly = true;
-            this.DataScores.Size = new System.Drawing.Size(440, 268);
-            this.DataScores.TabIndex = 0;
-            // 
-            // points
-            // 
-            this.points.HeaderText = "points";
-            this.points.Name = "points";
-            this.points.ReadOnly = true;
-            // 
-            // pseudo
-            // 
-            this.pseudo.HeaderText = "pseudo";
-            this.pseudo.Name = "pseudo";
-            this.pseudo.ReadOnly = true;
-            // 
-            // instant
-            // 
-            this.instant.HeaderText = "instant";
-            this.instant.Name = "instant";
-            this.instant.ReadOnly = true;
             // 
             // menuStrip1
             // 
@@ -88,6 +50,19 @@
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
             this.quitterToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.quitterToolStripMenuItem.Text = "Quitter";
+            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
+            // 
+            // DataScores
+            // 
+            this.DataScores.AllowUserToAddRows = false;
+            this.DataScores.AllowUserToDeleteRows = false;
+            this.DataScores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataScores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataScores.Location = new System.Drawing.Point(12, 27);
+            this.DataScores.Name = "DataScores";
+            this.DataScores.ReadOnly = true;
+            this.DataScores.Size = new System.Drawing.Size(440, 268);
+            this.DataScores.TabIndex = 2;
             // 
             // score
             // 
@@ -97,24 +72,24 @@
             this.Controls.Add(this.DataScores);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(480, 345);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(480, 345);
             this.Name = "score";
             this.Text = "Le Panthéon des Vainqueurs";
             this.Load += new System.EventHandler(this.score_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataScores)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataScores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView DataScores;
-        private System.Windows.Forms.DataGridViewTextBoxColumn points;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pseudo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn instant;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
+        private System.Windows.Forms.DataGridView DataScores;
     }
 }

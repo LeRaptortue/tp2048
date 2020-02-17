@@ -72,7 +72,7 @@
             this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
             this.logoPictureBox.Name = "logoPictureBox";
             this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
-            this.logoPictureBox.Size = new System.Drawing.Size(99, 355);
+            this.logoPictureBox.Size = new System.Drawing.Size(101, 362);
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logoPictureBox.TabIndex = 12;
             this.logoPictureBox.TabStop = false;
@@ -81,11 +81,11 @@
             // 
             this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProductName.Location = new System.Drawing.Point(111, 0);
+            this.labelProductName.Location = new System.Drawing.Point(113, 0);
             this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(207, 17);
+            this.labelProductName.Size = new System.Drawing.Size(209, 17);
             this.labelProductName.TabIndex = 19;
             this.labelProductName.Text = "2048";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -93,11 +93,11 @@
             // labelVersion
             // 
             this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelVersion.Location = new System.Drawing.Point(111, 36);
+            this.labelVersion.Location = new System.Drawing.Point(113, 36);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(207, 17);
+            this.labelVersion.Size = new System.Drawing.Size(209, 17);
             this.labelVersion.TabIndex = 0;
             this.labelVersion.Text = "Ce jeu à été développé en APAII 27";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -105,11 +105,11 @@
             // labelCopyright
             // 
             this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCopyright.Location = new System.Drawing.Point(111, 72);
+            this.labelCopyright.Location = new System.Drawing.Point(113, 72);
             this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCopyright.Name = "labelCopyright";
-            this.labelCopyright.Size = new System.Drawing.Size(207, 17);
+            this.labelCopyright.Size = new System.Drawing.Size(209, 17);
             this.labelCopyright.TabIndex = 21;
             this.labelCopyright.Text = "2019 - 2020";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -118,11 +118,11 @@
             // 
             this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCompanyName.Location = new System.Drawing.Point(111, 108);
+            this.labelCompanyName.Location = new System.Drawing.Point(113, 108);
             this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCompanyName.Name = "labelCompanyName";
-            this.labelCompanyName.Size = new System.Drawing.Size(207, 17);
+            this.labelCompanyName.Size = new System.Drawing.Size(209, 17);
             this.labelCompanyName.TabIndex = 22;
             this.labelCompanyName.Text = "CFA-CFP La Joliverie";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -130,13 +130,13 @@
             // textBoxDescription
             // 
             this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDescription.Location = new System.Drawing.Point(111, 147);
+            this.textBoxDescription.Location = new System.Drawing.Point(113, 147);
             this.textBoxDescription.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxDescription.Size = new System.Drawing.Size(207, 174);
+            this.textBoxDescription.Size = new System.Drawing.Size(209, 178);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = "Description";
@@ -145,7 +145,7 @@
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(243, 335);
+            this.okButton.Location = new System.Drawing.Point(247, 342);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 24;
