@@ -76,8 +76,36 @@ namespace tp2048
             }
             return (x, y, v);
         }
+        public static string SaveStr(int[,] plateau)
+        {
+            string result = "";
+            for (int i = 0; i <= 3; i++)
+            {
+                for (int j = 0; j <= 3; j++)
+                {
+                    int pow = (plateau[i, j] == 0) ? 0 : (int)Math.Log(plateau[i, j], 2);
+                    result += pow.ToString("X");
+                }
+                if (i != 3) { result += ","; }
+            }
+            return result;
+        }
 
-        
+        public static int[,] LoadStr(string hex)
+        {
+            int[,] resultat = new int[4, 4];
+            int i = 0;
+            foreach (string colonne in hex.Split(','))
+            {
+                for (int j = 0; j<=3; j++)
+                {
+                    int value = int.Parse(colonne[j].ToString(), System.Globalization.NumberStyles.HexNumber);
+                    resultat[i, j] = (value == 0) ? 0 : (int)Math.Pow(2, value);
+                }
+                i++;
+            }
+            return resultat;
+        }
     }
 }
 

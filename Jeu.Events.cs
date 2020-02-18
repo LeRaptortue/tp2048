@@ -42,7 +42,8 @@ namespace tp2048
             InitializeComponent();
             Fusion2048 += new System.EventHandler(Victoire);
             GameOver += new System.EventHandler(Defaite);
-            _case = testp9.testP9();
+            _case = new int[4, 4] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+            ajoutValeur();
             Affiche();
         }
         private void LabelEtat_Click(object sender, EventArgs e)
@@ -55,6 +56,7 @@ namespace tp2048
             Logs.Warn("Nouvelle partie");
             MessageEtat("Nouvelle partie");
             Logs.Debug("Nouvelle partie");
+            _case = new int[4, 4] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
             ajoutValeur();
             Affiche();
         }

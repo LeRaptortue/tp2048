@@ -35,6 +35,9 @@
             this.voirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.àProposDu2048ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sauvegarderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sauvegarderToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.chargerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.LabelEtat = new System.Windows.Forms.ToolStripStatusLabel();
             this.Grille = new System.Windows.Forms.TableLayoutPanel();
@@ -68,7 +71,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NouveauJeu,
             this.scoreToolStripMenuItem,
-            this.aideToolStripMenuItem});
+            this.aideToolStripMenuItem,
+            this.sauvegarderToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(334, 24);
@@ -94,14 +98,14 @@
             // enregistrerToolStripMenuItem
             // 
             this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
-            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.enregistrerToolStripMenuItem.Text = "Enregistrer";
             this.enregistrerToolStripMenuItem.Click += new System.EventHandler(this.enregistrerToolStripMenuItem_Click);
             // 
             // voirToolStripMenuItem
             // 
             this.voirToolStripMenuItem.Name = "voirToolStripMenuItem";
-            this.voirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.voirToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.voirToolStripMenuItem.Text = "Voir";
             this.voirToolStripMenuItem.Click += new System.EventHandler(this.voirToolStripMenuItem_Click);
             // 
@@ -119,6 +123,29 @@
             this.àProposDu2048ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.àProposDu2048ToolStripMenuItem.Text = "À propos du 2048";
             this.àProposDu2048ToolStripMenuItem.Click += new System.EventHandler(this.àProposDu2048ToolStripMenuItem_Click);
+            // 
+            // sauvegarderToolStripMenuItem
+            // 
+            this.sauvegarderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sauvegarderToolStripMenuItem1,
+            this.chargerToolStripMenuItem});
+            this.sauvegarderToolStripMenuItem.Name = "sauvegarderToolStripMenuItem";
+            this.sauvegarderToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.sauvegarderToolStripMenuItem.Text = "Sauvegarde";
+            // 
+            // sauvegarderToolStripMenuItem1
+            // 
+            this.sauvegarderToolStripMenuItem1.Name = "sauvegarderToolStripMenuItem1";
+            this.sauvegarderToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.sauvegarderToolStripMenuItem1.Text = "Sauvegarder";
+            this.sauvegarderToolStripMenuItem1.Click += new System.EventHandler(this.sauvegarderToolStripMenuItem1_Click);
+            // 
+            // chargerToolStripMenuItem
+            // 
+            this.chargerToolStripMenuItem.Name = "chargerToolStripMenuItem";
+            this.chargerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chargerToolStripMenuItem.Text = "Charger";
+            this.chargerToolStripMenuItem.Click += new System.EventHandler(this.chargerToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -465,6 +492,9 @@
         private System.Windows.Forms.ToolStripMenuItem scoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enregistrerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem voirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sauvegarderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sauvegarderToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem chargerToolStripMenuItem;
     }
 }
 

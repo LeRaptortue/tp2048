@@ -54,12 +54,6 @@ namespace tp2048
             aPropos.StartPosition = FormStartPosition.CenterParent;
             aPropos.ShowDialog();
         }
-
-        private void afficherLaideToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void enregistrerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if ((_score > _scoreMinEngregistrement)
@@ -84,6 +78,45 @@ namespace tp2048
             var score = new score();
             score.StartPosition = FormStartPosition.CenterParent;
             score.ShowDialog();
+        }
+
+
+        private void sauvegarderToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(saveStr(_case));
+
+            string saveString = Outils.SaveStr(_case);
+            string requeteSave = $"INSERT OR REPLACE INTO jeu (uid, terminal, points, mouvements, cases) VALUES ((SELECT uid FROM utilisateur WHERE pseudo ='{Environment.UserName}'), '{Environment.MachineName}', {_score}, {_mouvements}, '{saveString}');";
+            bool partieExistante = false;
+            // Récup date de sauvegarde précédente
+            DataSet donnees = SqlDB.Instance().LitSQL($"SELECT COUNT(*) AS partie, points FROM jeu WHERE uid=(SELECT uid FROM utilisateur where pseudo='{Environment.UserName}') AND terminal='{Environment.MachineName}'", "jeu");
+            if (donnees.Tables["jeu"].Rows[0]["partie"].ToString() == "1")
+            {
+                partieExistante = true;
+            }
+
+            //Confirmation
+            if (!partieExistante || MessageBox.Show($"Ecraser la partie existante à {donnees.Tables["jeu"].Rows[0]["points"].ToString()} points pour {Environment.UserName} ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                SqlDB.Instance().ExecSQL(requeteSave);
+            }
+        }
+
+        private void chargerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataSet donnees = SqlDB.Instance().LitSQL($"SELECT COUNT(*) AS partie, points, mouvements, cases FROM jeu WHERE uid=(SELECT uid FROM utilisateur WHERE pseudo='{Environment.UserName}') AND terminal='{Environment.MachineName}'", "jeu");
+            int jeu = int.Parse(donnees.Tables["jeu"].Rows[0]["partie"].ToString());
+            if (jeu != 0)
+            {
+                _case = Outils.LoadStr(donnees.Tables["jeu"].Rows[0]["cases"].ToString());
+                _mouvements = int.Parse(donnees.Tables["jeu"].Rows[0]["mouvements"].ToString());
+                _score = int.Parse(donnees.Tables["jeu"].Rows[0]["points"].ToString());
+                Affiche();
+            }
+            else
+            {
+                MessageBox.Show("Pas de partie sauvegardé");
+            }    
         }
     }
 }
