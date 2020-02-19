@@ -17,6 +17,7 @@ namespace tp2048
         private int _score = 0;
         private const int _scoreMinEngregistrement = 500;
         private int[,] _case = new int[4, 4];
+        
 
         private void MessageEtat(string message)
         {
