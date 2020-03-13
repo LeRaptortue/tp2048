@@ -19,8 +19,8 @@ namespace tp2048
 
         private void score_Load(object sender, EventArgs e)
         {
-            string requete = "SELECT points, pseudo, instant FROM score LEFT JOIN utilisateur ON utilisateur.uid = score.uid where 1 ORDER BY points DESC";
-            DataSet donnees = SqlDB.Instance().LitSQL(requete, "score");
+            string requete = "SELECT points, pseudo, instant FROM score LEFT JOIN utilisateur ON utilisateur.uid = score.uid ORDER BY points DESC";
+            DataSet donnees = SqlSDB.Instance().SqlServer(requete, "score");
             DataScores.DataSource = donnees.Tables["score"];
         }
 

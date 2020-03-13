@@ -61,7 +61,7 @@ namespace tp2048
                 && (MessageBox.Show($"Enregistrer le score de {_score} point pour {Environment.UserName} ?", "",
                 MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                SqlDB.Instance().ExecSQL($"INSERT INTO score (uid, points, instant) VALUES((SELECT uid FROM utilisateur WHERE pseudo ='{Environment.UserName}'), { _score}, DATETIME('now'))");
+                SqlSDB.Instance().ExecSQL($"INSERT INTO score (uid, points, instant) VALUES((SELECT uid FROM utilisateur WHERE pseudo ='{Environment.UserName}'), { _score}, CURRENT_TIMESTAMP)");
             }
             else
             {
@@ -87,26 +87,32 @@ namespace tp2048
             //MessageBox.Show(saveStr(_case));
 
             string saveString = Outils.SaveStr(_case);
-            string requeteSave = $"INSERT OR REPLACE INTO jeu (uid, terminal, points, mouvements, cases) VALUES ((SELECT uid FROM utilisateur WHERE pseudo ='{Environment.UserName}'), '{Environment.MachineName}', {_score}, {_mouvements}, '{saveString}');";
+            string requeteSave = $"MERGE jeu as j " +
+                $"USING(VALUES((select uid from utilisateur where pseudo = '{Environment.UserName}'), '{Environment.MachineName}', { _score}, { _mouvements}, '{ saveString}')) " +
+                $" AS SRC(uid, terminal, points, mouvements, cases) ON j.uid = src.uid and j.terminal = src.terminal" +
+                $" WHEN NOT MATCHED THEN INSERT(uid, terminal, points, mouvements, cases) VALUES((select uid from utilisateur where pseudo = '{Environment.UserName}'), '{Environment.MachineName}', { _score}, { _mouvements}, '{ saveString}')" +
+                $" WHEN MATCHED THEN UPDATE set points = { _score }, mouvements = { _mouvements }, cases = '{ saveString }';";
             bool partieExistante = false;
             // Récup date de sauvegarde précédente
-            DataSet donnees = SqlDB.Instance().LitSQL($"SELECT COUNT(*) AS partie, points FROM jeu WHERE uid=(SELECT uid FROM utilisateur where pseudo='{Environment.UserName}') AND terminal='{Environment.MachineName}'", "jeu");
-            if (donnees.Tables["jeu"].Rows[0]["partie"].ToString() == "1")
+            DataSet donnees = SqlSDB.Instance().SqlServer($"SELECT COUNT(*) AS partie, MAX(points) as pts FROM jeu WHERE uid=(SELECT uid FROM utilisateur where pseudo ='{Environment.UserName}') AND terminal='{Environment.MachineName}' group by uid", "jeu");
+            if (donnees.Tables["jeu"].Rows.Count != 0)
             {
-                partieExistante = true;
+                if (donnees.Tables["jeu"].Rows[0]["partie"].ToString() == "1")
+                {
+                    partieExistante = true;
+                }
             }
-
             //Confirmation
-            if (!partieExistante || MessageBox.Show($"Ecraser la partie existante à {donnees.Tables["jeu"].Rows[0]["points"].ToString()} points pour {Environment.UserName} ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (!partieExistante || MessageBox.Show($"Ecraser la partie existante à {donnees.Tables["jeu"].Rows[0]["pts"].ToString()} points pour {Environment.UserName} ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                SqlDB.Instance().ExecSQL(requeteSave);
+                SqlSDB.Instance().ExecSQL(requeteSave);
             }
         }
 
         private void chargerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataSet donnees = SqlDB.Instance().LitSQL($"SELECT COUNT(*) AS partie, points, mouvements, cases FROM jeu WHERE uid=(SELECT uid FROM utilisateur WHERE pseudo='{Environment.UserName}') AND terminal='{Environment.MachineName}'", "jeu");
-            int jeu = int.Parse(donnees.Tables["jeu"].Rows[0]["partie"].ToString());
+            DataSet donnees = SqlSDB.Instance().SqlServer($"SELECT points, mouvements, cases FROM jeu WHERE uid=(SELECT uid FROM utilisateur WHERE pseudo ='{Environment.UserName}') AND terminal='{Environment.MachineName}'", "jeu");
+            int jeu = 1;
             if (jeu != 0)
             {
                 _case = Outils.LoadStr(donnees.Tables["jeu"].Rows[0]["cases"].ToString());

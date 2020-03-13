@@ -118,7 +118,8 @@ namespace tp2048
             log4net.GlobalContext.Properties["fichierLog"] = $"C:\\Users\\{Environment.UserName}\\Appdata\\Local\\Temp\\2048/log";
             log4net.Config.XmlConfigurator.Configure();
             Logs.Debug("Démarrage du programme");
-            SqlDB.Instance().ExecSQL($"INSERT OR IGNORE INTO `utilisateur` (pseudo) VALUES ('{Environment.UserName}')");
+            SqlSDB.Instance().ExecSQL($"INSERT INTO utilisateur(pseudo) select ('{Environment.UserName}') where not exists ( select pseudo from utilisateur where pseudo ='{Environment.UserName}')");
+            //INSERT INTO TableName (ColumnName) SELECT '" + value +"' WHERE NOT EXISTS ( SELECT ColumnName from TableName WHERE Name = '" + value + "')";
         }
     }
 }
